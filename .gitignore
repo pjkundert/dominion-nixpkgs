@@ -1,0 +1,7 @@
+*.qcow2
+/result*
+.DS_Store
+nix.log
+\#*
+.\#*
+*~
