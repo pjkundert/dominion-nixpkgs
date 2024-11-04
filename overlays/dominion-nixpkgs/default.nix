@@ -77,4 +77,14 @@ rec {
       };
     }
   );
+
+  fpdf2 = with pkgs.python3Packages; buildPythonPackage rec {
+    pname = "fpdf2";
+    version = "2.5.4";
+    src = fetchPypi {
+      inherit pname version;
+      sha256 = "1zz3xfzqnvfb8474niqwl335s9dmhmihdx394ysy0v5ipb44bc14";
+    };
+    doCheck = false;
+  };
 }

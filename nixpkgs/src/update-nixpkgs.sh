@@ -5,7 +5,7 @@ set -euo pipefail
 scriptroot=$(dirname "$(realpath "$0")")
 
 # url encoded: channel_revision{status="stable",variant="primary"}
-metric=$(curl --silent --show-error "https://monitoring.nixos.org/prometheus/api/v1/query?query=channel_revision%7Bstatus%3D%22stable%22%2Cvariant%3D%22primary%22%7D" | jq -r .data.result[].metric)
+metric=$(curl --silent --show-error -H "content-type: application/json" "https://prometheus.nixos.org/api/v1/query?query=channel_revision%7Bstatus%3D%22stable%22%2Cvariant%3D%22primary%22%7D" | jq -r .data.result[].metric)
 rev=$(jq -r .revision <<<"$metric")
 channel=$(jq -r .channel <<<"$metric")
 
